@@ -1,0 +1,34 @@
+[project]
+name = "jax_morph"
+version = "0.1.0"
+description = "JAX/Flax translation of the MORPH PDE foundation model"
+readme = "README.md"
+
+authors = [{ name = "Leon Armbruster", email = "leonarmbruster@iisb.fraunhofer.de" }]
+
+license = {text = "BSD-3-Clause"}
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = [
+    "flax>=0.10",
+    "jax>=0.5",
+    "jaxlib>=0.5",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+convert = [
+    "torch>=2.4",
+    "huggingface-hub>=0.20",
+]
+
+gpu = [
+    "jax[cuda12]",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["jax_morph"]
